@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const SearchStatus = ({ length }) => {
   const renderPhrase = () => {
     return length === 4 || length === 3 || length === 2
-      ? "человека"
-      : "человек";
+      ? 'человека'
+      : 'человек';
   };
   const formatCount = () => {
     if (length === 0) {
@@ -12,12 +13,15 @@ const SearchStatus = ({ length }) => {
     }
   };
   return length !== 0 ? (
-    <h1 className="badge bg-primary fs-1">
+    <span className="badge bg-primary fs-1">
       {length} {renderPhrase()} тусанет с тобой сегодня
-    </h1>
+    </span>
   ) : (
     <span className="badge fs-1">{formatCount()}</span>
   );
 };
 
+SearchStatus.propTypes = {
+  length: PropTypes.number.isRequired
+};
 export default SearchStatus;
