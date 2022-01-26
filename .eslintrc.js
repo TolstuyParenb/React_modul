@@ -20,7 +20,7 @@ module.exports = {
   rules: {
     indent: ['error', 2],
     semi: [2, 'always'],
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': ['error', { anonymous: 'always', named: 'never' }],
     'multiline-ternary': ['off'],
     quotes: ['error', 'single', { avoidEscape: true }]
   }
