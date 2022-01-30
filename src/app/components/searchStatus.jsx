@@ -9,15 +9,15 @@ const SearchStatus = ({ length }) => {
   };
   const formatCount = () => {
     if (length === 0) {
-      return <h1 className="badge bg-danger fs-1">Никто с тобой не тусанет</h1>;
+      return <h1 className='badge bg-danger fs-1'>Никто с тобой не тусанет</h1>;
     }
   };
   return length !== 0 ? (
-    <span className="badge bg-primary fs-1">
+    <span className='badge bg-primary fs-1'>
       {length} {renderPhrase()} тусанет с тобой сегодня
     </span>
   ) : (
-    <span className="badge fs-1">{formatCount()}</span>
+    <span className='badge fs-1'>{formatCount()}</span>
   );
 };
 

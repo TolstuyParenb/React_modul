@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState, useEffect } from 'react';
 import { paginate } from '../utils/paginate';
 import Pagination from './pagination';
@@ -12,6 +13,7 @@ const Users = ({ users: allUsers, ...rest }) => {
   const [selectedProf, setSelectedProf] = useState();
 
   const pageSize = 2;
+
   useEffect(() => {
     api.professions.fetchAll().then((data) => setProfessions(data));
   }, []);
@@ -28,39 +30,46 @@ const Users = ({ users: allUsers, ...rest }) => {
     setCurrentPage(pageIndex);
   };
   const filteredUsers = selectedProf
-    ? allUsers.filter((user) => user.profession === selectedProf)
+    ? allUsers.filter(
+        // eslint-disable-next-line indent
+        (user) =>
+          // eslint-disable-next-line indent
+          JSON.stringify(user.profession) === JSON.stringify(selectedProf)
+      )
     : allUsers;
+
   const count = filteredUsers.length;
   const userCrop = paginate(filteredUsers, currentPage, pageSize);
   const clearFilter = () => {
     setSelectedProf();
   };
+
   return (
-    <div className="d-flex">
+    <div className='d-flex'>
       {professions && (
-        <div className="d-flex flex-column flex-shrink-0 p-3">
+        <div className='d-flex flex-column flex-shrink-0 p-3'>
           <GroupList
+            selectedItems={selectedProf}
             items={professions}
             onItemSelect={handleProfessionSelect}
-            selectedItems={selectedProf}
           />
-          <button className="btn btn-secondary mt-2" onClick={clearFilter}>
-            Очистить всё
+          <button className='btn btn-secondary mt-2' onClick={clearFilter}>
+            Очистить
           </button>
         </div>
       )}
-      <div className="d-flex flex-column">
+      <div className='d-flex flex-column'>
         <SearchStatus length={count} />
         {count > 0 && (
-          <table className="table">
+          <table className='table'>
             <thead>
               <tr>
-                <th scope="col">Имя</th>
-                <th scope="col">Качество</th>
-                <th scope="col">Профессия</th>
-                <th scope="col">Встретился, раз</th>
-                <th scope="col">Оценка</th>
-                <th scope="col">Избраное </th>
+                <th scope='col'>Имя</th>
+                <th scope='col'>Качество</th>
+                <th scope='col'>Профессия</th>
+                <th scope='col'>Встретился, раз</th>
+                <th scope='col'>Оценка</th>
+                <th scope='col'>Избраное </th>
               </tr>
             </thead>
             <tbody>
@@ -70,7 +79,7 @@ const Users = ({ users: allUsers, ...rest }) => {
             </tbody>
           </table>
         )}
-        <div className="d-flex justify-content-center">
+        <div className='d-flex justify-content-center'>
           <Pagination
             itemsCount={count}
             pageSize={pageSize}
@@ -82,7 +91,8 @@ const Users = ({ users: allUsers, ...rest }) => {
     </div>
   );
 };
+
 Users.propTypes = {
-  users: PropTypes.array.isRequired
+  users: PropTypes.array
 };
 export default Users;

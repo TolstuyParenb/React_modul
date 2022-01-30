@@ -29,7 +29,7 @@ const User = ({
         <BookMark status={bookmark} onClick={() => onBookMark(_id)} />
       </td>
       <td>
-        <button className="btn btn-danger m-2" onClick={() => onDelete(_id)}>
+        <button className='btn btn-danger m-2' onClick={() => onDelete(_id)}>
           Delete
         </button>
       </td>
