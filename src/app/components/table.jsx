@@ -31,7 +31,7 @@ Table.propTypes = {
   columns: PropTypes.object,
   data: PropTypes.array,
   children: PropTypes.array,
-  currentPath: PropTypes.object,
+  currentPath: PropTypes.string,
   setCurrentPath: PropTypes.func
 };
 export default Table;
