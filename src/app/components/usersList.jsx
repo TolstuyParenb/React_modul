@@ -16,13 +16,13 @@ const UsersList = () => {
   const [selectedProf, setSelectedProf] = useState();
   const [sortBy, setSortBy] = useState({ iter: 'name', order: 'asc' });
   const pageSize = 6;
-
-  const [currentPath, setCurrentPath] = useState('Имя');
   const [users, setUsers] = useState();
+  const [currentPath, setCurrentPath] = useState('Имя');
 
   useEffect(() => {
     api.users.fetchAll().then((data) => setUsers(data));
   }, []);
+
   const handleDelete = (userId) => {
     setUsers(users.filter((user) => user._id !== userId));
   };
@@ -56,9 +56,7 @@ const UsersList = () => {
   if (users) {
     const filteredUsers = selectedProf
       ? users.filter(
-          // eslint-disable-next-line indent
           (user) =>
-            // eslint-disable-next-line indent
             JSON.stringify(user.profession) === JSON.stringify(selectedProf)
         )
       : users;
