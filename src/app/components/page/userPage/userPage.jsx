@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import API from '../api';
-import QualitiesList from './qualitiesList';
-
+import api from '../../../api';
+import QualitiesList from '../../ui/qualities/qualitiesList';
 const UserPage = ({ id }) => {
   const [user, setUser] = useState();
   useEffect(() => {
-    API.users.getById(id).then((data) => setUser(data));
+    api.users.getById(id).then((data) => setUser(data));
   }, []);
 
   if (!user) return <h4>Loading...</h4>;
